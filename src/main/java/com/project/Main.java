@@ -50,10 +50,10 @@ public class Main {
                     case 8: LecturaObjectes.main(args);             break;
                     case 9: EscripturaLlistes.main(args);           break;
                     case 10: LecturaLlistes.main(args);             break;
-                    case 11: LecturaRandomAccessFile.main(args);    break;
-                    case 12: EscripturaRandomAccessFile.main(args); break;
-                    case 13: LecturaFileChannel.main(args);    break;
-                    case 14: EscripturaFileChannel.main(args); break;
+                    case 11: EscripturaRandomAccessFile.main(args); break;
+                    case 12: LecturaRandomAccessFile.main(args);    break;
+                    case 13: EscripturaFileChannel.main(args);      break;
+                    case 14: LecturaFileChannel.main(args);         break;
                     case 40: GestioCSV.main(args);                  break;
                     case 41: GestioXML.main(args);                  break;
                     case 50: running = false;                       break;

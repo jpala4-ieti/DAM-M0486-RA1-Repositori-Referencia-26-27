@@ -2,7 +2,7 @@ package com.project;
 
 import com.project.utilitats.UtilitatsFitxers;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,7 +15,7 @@ public class EscripturaArxiuList {
     public static void escriureArxiu(List<String> linies, String camiFitxer) throws IOException {
         // Escriure en l'arxiu
         Path sortida = Paths.get(camiFitxer);
-        Files.write(sortida, linies, Charset.defaultCharset());
+        Files.write(sortida, linies, StandardCharsets.UTF_8);
     }
 
     public static void main(String[] args) {

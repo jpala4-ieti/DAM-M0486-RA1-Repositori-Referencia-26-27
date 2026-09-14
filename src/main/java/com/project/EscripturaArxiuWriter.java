@@ -3,19 +3,20 @@ package com.project;
 import com.project.utilitats.UtilitatsFitxers;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class EscripturaArxiuWriter {
 
     // Mètode per escriure en un fitxer
     public static void escriureFitxer(String camiFitxer, String contingut) throws IOException {
-        try (FileWriter fw = new FileWriter(camiFitxer)) {
+        try (FileWriter fw = new FileWriter(camiFitxer, StandardCharsets.UTF_8)) {
             fw.write(contingut);
         }
     }
 
     // Mètode per afegir text a un fitxer
     public static void afegirAlFitxer(String camiFitxer, String contingut) throws IOException {
-        try (FileWriter fw = new FileWriter(camiFitxer, true)) {
+        try (FileWriter fw = new FileWriter(camiFitxer, StandardCharsets.UTF_8, true)) {
             fw.write(contingut);
         }
     }

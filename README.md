@@ -1,15 +1,15 @@
 
 # MP0486-RA1 - Exemple de guardat de dades a arxius #
 
-[![Java CI with Maven](https://github.com/jpala4-ieti/DAM-M0486-RA1-Repositori-Referencia-25-26/actions/workflows/maven.yml/badge.svg)](https://github.com/jpala4-ieti/DAM-M0486-RA1-Repositori-Referencia-25-26/actions/workflows/maven.yml)
+[![Java CI with Maven](https://github.com/jpala4-ieti/DAM-M0486-RA1-Repositori-Referencia-26-27/actions/workflows/maven.yml/badge.svg)](https://github.com/jpala4-ieti/DAM-M0486-RA1-Repositori-Referencia-26-27/actions/workflows/maven.yml)
 
 En aquest projecte hi ha diversos exemples de com guardar dades en Java, cap a arxius de text, binaris, XML, CSV i objectes serialitzats
 
 ### Instruccions ###
 
-Primer posar en funcionament el servidor
+Cada classe del paquet `com.project` és un exemple independent amb el seu propi `main`. Es poden executar una a una (vegeu més avall) o des del menú de `Main.java`.
 
-Després executar el client i comprovar com els càlculs obtenen resultat des del servidor
+Els exemples escriuen i llegeixen fitxers dins de la carpeta `data/` del projecte.
 
 ### Ordre recomanat d'estudi:
 
@@ -32,6 +32,12 @@ Després executar el client i comprovar com els càlculs obtenen resultat des de
 
     EscripturaLlistes.java
     LecturaLlistes.java
+
+    EscripturaRandomAccessFile.java
+    LecturaRandomAccessFile.java
+
+    EscripturaFileChannel.java
+    LecturaFileChannel.java
 
     GestioCSV.java
     GestioXML.java
@@ -73,7 +79,6 @@ java -cp ./target/ams2-m0486-pr11-repo-ref-1.0.1.jar com.project.ExempleNIO
 ```
 
 ### Execució de tests ###
-Per executar, un cop generat l'artefacte .jar
 ```bash
 # Executar TOTS els tests
 mvn test
@@ -81,7 +86,7 @@ mvn test
 mvn test "-Dtest=com.project.LecturaArxiuListTest"
 mvn test -Dtest=LecturaArxiuListTest
 # Executar múltiples tests específics (separats per comes)
-mvn test -Dtest="LecturaArxiuListTest,LecturaArxiuScannerTest,GestioArxiuTest"
+mvn test -Dtest="LecturaArxiuListTest,LecturaArxiuScannerTest,GestioArxiusTest"
 # Tots els tests que comencin amb "Lectura"
 mvn test -Dtest="Lectura*"
 # Tots els tests que continguin "Arxiu"

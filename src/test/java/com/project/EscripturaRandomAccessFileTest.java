@@ -10,7 +10,7 @@ import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class EscripturaRandomAccessFileWriter {
+class EscripturaRandomAccessFileTest {
 
     // Injectem un directori temporal gestionat per JUnit 5. 🧑‍🔬
     @TempDir
