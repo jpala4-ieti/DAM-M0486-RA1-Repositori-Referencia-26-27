@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.*;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -133,7 +134,7 @@ public class EinaConcatenarFitxers extends JFrame {
 
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             File fitxerAGuardar = fileChooser.getSelectedFile();
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fitxerAGuardar))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fitxerAGuardar, StandardCharsets.UTF_8))) {
                 writer.write(contingut);
                 JOptionPane.showMessageDialog(this, "Fitxer guardat correctament.", "Èxit", JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException e) {

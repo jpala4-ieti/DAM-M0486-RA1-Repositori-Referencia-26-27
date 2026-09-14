@@ -1,7 +1,6 @@
 package com.project.utilitats;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -26,7 +25,7 @@ public class UtilsCSV {
     public static void escriure(String camiFitxer, List<String> csvLinies) {
         Path sortida = Paths.get(camiFitxer);
         try {
-            Files.write(sortida, csvLinies, Charset.defaultCharset());
+            Files.write(sortida, csvLinies, StandardCharsets.UTF_8);
         } catch (IOException e) {
             System.err.println("Error en escriure al fitxer CSV: " + e.getMessage());
         }

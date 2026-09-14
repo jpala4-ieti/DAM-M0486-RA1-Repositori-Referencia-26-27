@@ -62,7 +62,7 @@ Per executar el projecte a Linux/macOS cal
 ./run.sh com.project.Main
 ```
 
-Per fer anar classes específiques amb main:
+Per fer anar classes específiques amb main (els arguments que segueixen la classe es passen al programa):
 ```bash
 .\run.ps1 com.project.EscripturaDadesPrimitives
 ./run.sh com.project.EscripturaDadesPrimitives
@@ -70,7 +70,7 @@ Per fer anar classes específiques amb main:
 
 Per executar sense usar script propi, directament amb maven:
 ```bash
-mvn exec:java "-Dexec.mainClass=com.project.ExempleNIO"
+mvn compile exec:java -PrunMain "-Dexec.mainClass=com.project.ExempleNIO"
 ```
 
 Per executar, un cop generat l'artefacte .jar

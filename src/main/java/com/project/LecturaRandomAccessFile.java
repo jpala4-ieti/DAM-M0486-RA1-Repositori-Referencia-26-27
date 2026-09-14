@@ -18,7 +18,7 @@ public class LecturaRandomAccessFile {
         // Comprovem primer si el fitxer existeix
         if (!Files.exists(rutaFitxer)) {
             System.err.println("Error: El fitxer " + rutaFitxer.toAbsolutePath() + " no existeix.");
-            System.err.println("Si us plau, executa primer RandomAccessFileWriter per crear-lo.");
+            System.err.println("Si us plau, executa primer EscripturaRandomAccessFile per crear-lo.");
             return;
         }
 
