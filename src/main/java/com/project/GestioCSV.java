@@ -1,6 +1,7 @@
 package com.project;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,8 +26,12 @@ public class GestioCSV {
             }
         }
 
-        // Llegir el fitxer CSV
+        // Llegir el fitxer CSV (retorna null si no es pot llegir)
         List<String> csv = UtilsCSV.llegir(camiFitxer);
+        if (csv == null) {
+            System.out.println("No s'ha pogut llegir el fitxer " + camiFitxer);
+            return;
+        }
 
         // Obtenir les columnes
         String[] columnes = UtilsCSV.obtenirClaus(csv);
@@ -63,9 +68,14 @@ public class GestioCSV {
         int anyNou = (int) ((Math.random() * (2020 - 1999)) + 1999);
         UtilsCSV.actualitzarLinia(csv, numLiniaAvatar, "any", Integer.toString(anyNou));
 
-        // Escriure els canvis al fitxer CSV
-        UtilsCSV.escriure(camiFitxer, csv);
-        System.out.println("S'ha canviat l'any \"d'Avatar\", era " + anyAntic + " i s'ha posat " + anyNou);
+        // Escriure els canvis al fitxer CSV (escriure propaga la IOException: cal gestionar-la)
+        try {
+            UtilsCSV.escriure(camiFitxer, csv);
+            System.out.println("S'ha canviat l'any \"d'Avatar\", era " + anyAntic + " i s'ha posat " + anyNou);
+        } catch (IOException e) {
+            System.err.println("No s'han pogut desar els canvis al CSV: " + e.getMessage());
+            return;
+        }
 
         // Llistar les dades del CSV
         System.out.println("\nDades del CSV:");

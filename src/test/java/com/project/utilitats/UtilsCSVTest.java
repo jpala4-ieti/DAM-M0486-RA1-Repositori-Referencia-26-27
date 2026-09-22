@@ -24,6 +24,9 @@ class UtilsCSVTest {
         );
 
         try {
+            // Assegurar que la carpeta existeix (el test no ha de dependre de l'ordre d'execució)
+            UtilitatsFitxers.crearCarpetaSiNoExisteix(camiBase);
+
             // Escriure les dades inicials al fitxer
             UtilsCSV.escriure(camiFitxer, csvInicial);
 
@@ -53,6 +56,9 @@ class UtilsCSVTest {
         );
 
         try {
+            // Assegurar que la carpeta existeix (el test no ha de dependre de l'ordre d'execució)
+            UtilitatsFitxers.crearCarpetaSiNoExisteix(camiBase);
+
             // Escriure les dades inicials al fitxer
             UtilsCSV.escriure(camiFitxer, csvInicial);
 

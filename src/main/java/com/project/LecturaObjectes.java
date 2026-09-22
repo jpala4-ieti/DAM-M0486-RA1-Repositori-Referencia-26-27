@@ -43,7 +43,14 @@ public class LecturaObjectes {
             System.out.println(obj0);
             System.out.println(obj1);
 
-        } catch (ClassNotFoundException | IOException e) {
+        } catch (FileNotFoundException e) {
+            // FileNotFoundException és una subclasse d'IOException: cal capturar-la ABANS
+            // si volem distingir el cas de fitxer inexistent
+            System.out.println("Fitxer no trobat: " + filePath);
+        } catch (ClassNotFoundException e) {
+            // La classe de l'objecte serialitzat no existeix al classpath
+            System.out.println("Classe no trobada en deserialitzar: " + e.getMessage());
+        } catch (IOException e) {
             System.out.println("Error en la lectura del fitxer: " + filePath);
             e.printStackTrace();
         }
