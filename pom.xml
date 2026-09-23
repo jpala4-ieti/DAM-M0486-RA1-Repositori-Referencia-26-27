@@ -13,18 +13,22 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- Classe principal dels dos .jar (es fa servir amb "java -jar") -->
+        <main.class>com.project.Main</main.class>
     </properties>
 
     <build>
         <plugins>
-            <!-- Maven Compiler Plugin -->
+            <!-- Maven Compiler Plugin
+                 release 21: genera classes per a Java 21 i NOMÉS permet fer servir
+                 l'API de Java 21, encara que es compili amb un JDK més nou (p. ex. 25).
+                 Així el que compila a casa també compila a GitHub Actions (Java 21). -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <source>21</source>
-                    <target>21</target>
+                    <release>21</release>
                 </configuration>
             </plugin>
 
@@ -39,6 +43,50 @@
                         <file.encoding>UTF-8</file.encoding>
                     </systemPropertyVariables>
                 </configuration>
+            </plugin>
+
+            <!-- Jar Plugin: genera target/ams2-m0486-pr11-repo-ref-1.0.1.jar
+                 amb ${main.class} com a classe principal (es pot executar amb "java -jar") -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.1</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>${main.class}</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <!-- Assembly Plugin: a més del .jar normal, genera
+                 target/ams2-m0486-pr11-repo-ref-1.0.1-jar-with-dependencies.jar
+                 amb totes les dependències i ${main.class} com a classe principal
+                 (es pot executar amb "java -jar") -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.7.1</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>${main.class}</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
